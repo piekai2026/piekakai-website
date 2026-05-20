@@ -24,7 +24,8 @@ approval, then execute.
 
 ## Remaining (code)
 
-- [ ] Day 20-21 — Phase 1 kickoff doc, `lessons.md` wrap-up, tag `v0.1.0-phase0-complete`
+- [x] Day 20-21 — Phase 1 kickoff doc (`docs/phase-1-kickoff.md`), `lessons.md`
+      wrap-up, tag `v0.1.0-phase0-complete`. **Phase 0 complete.**
 
 ## Needs M (manual / accounts)
 
