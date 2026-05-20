@@ -16,11 +16,14 @@ approval, then execute.
       action, Brevo helper). Pending: M runs `db:migrate`, creates Brevo templates
 - [x] Day 15-17 — PiekAI Journal (MDX, RSS, starter post)
 - [x] Day 18-19 — Static pages (over-ons, methodologie, prijzen, contact, status, 404/500)
+- [x] Day 14 — Quality pass: robots.ts + sitemap.ts + llms.txt + opengraph-image + icon.svg,
+      no-JS `Reveal` hardening (reveal-anim + noscript), WCAG 2.2 AA audit (Lighthouse
+      a11y/best-practices/seo = 100). Lighthouse performance = 88 on localhost `next start`
+      (4x CPU throttle); LazyMotion bundle-trim attempted but reverted — `whileInView`
+      breaks under LazyMotion `m`. Re-measure performance on Cloudflare prod / CI.
 
 ## Remaining (code)
 
-- [ ] Day 14 — Quality pass: Lighthouse 95+, WCAG 2.2 AA audit, no-JS `Reveal` hardening,
-      OG images, robots.txt + sitemap.xml + llms.txt
 - [ ] Day 20-21 — Phase 1 kickoff doc, `lessons.md` wrap-up, tag `v0.1.0-phase0-complete`
 
 ## Needs M (manual / accounts)
