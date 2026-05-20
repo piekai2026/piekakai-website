@@ -20,32 +20,35 @@ import { type NextRequest, NextResponse } from "next/server";
 export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
-  const supabase = createServerClient(
-    // biome-ignore lint/style/noNonNullAssertion: required env vars — app won't start without them
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    // biome-ignore lint/style/noNonNullAssertion: required env vars — app won't start without them
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll();
-        },
-        setAll(cookiesToSet) {
-          // First pass: update the request cookies so subsequent proxy
-          // reads are consistent.
-          cookiesToSet.forEach(({ name, value }) => {
-            request.cookies.set(name, value);
-          });
-          // Rebuild the response so Next.js forwards the updated cookies.
-          supabaseResponse = NextResponse.next({ request });
-          // Second pass: write cookies into the outgoing response.
-          cookiesToSet.forEach(({ name, value, options }) => {
-            supabaseResponse.cookies.set(name, value, options);
-          });
-        },
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  // Supabase env not configured yet (Phase 0 — set in apps/web/.env.local).
+  // Skip the session refresh so the public site stays up without auth wired.
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return supabaseResponse;
+  }
+
+  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      getAll() {
+        return request.cookies.getAll();
+      },
+      setAll(cookiesToSet) {
+        // First pass: update the request cookies so subsequent proxy
+        // reads are consistent.
+        cookiesToSet.forEach(({ name, value }) => {
+          request.cookies.set(name, value);
+        });
+        // Rebuild the response so Next.js forwards the updated cookies.
+        supabaseResponse = NextResponse.next({ request });
+        // Second pass: write cookies into the outgoing response.
+        cookiesToSet.forEach(({ name, value, options }) => {
+          supabaseResponse.cookies.set(name, value, options);
+        });
       },
     },
-  );
+  });
 
   // IMPORTANT: do NOT add any logic between createServerClient and
   // getUser(). The session is refreshed as a side-effect of getUser().
