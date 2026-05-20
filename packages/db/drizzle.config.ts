@@ -1,5 +1,12 @@
 import { defineConfig } from "drizzle-kit";
 
+// Load packages/db/.env so DATABASE_URL reaches drizzle-kit (migrate / studio).
+try {
+  process.loadEnvFile();
+} catch {
+  // No .env present — fine for `generate`, which needs no DB connection.
+}
+
 /**
  * Drizzle is the SINGLE migration owner for PiekAI — do not also run Supabase
  * CLI migrations. `schemaFilter` keeps Drizzle off Supabase-managed schemas
