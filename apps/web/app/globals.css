@@ -1,26 +1,118 @@
-@import "tailwindcss";
+/*
+ * PiekAI landing page styles.
+ * Tailwind 4 with content scanning scoped to `app` and `components`
+ * to avoid the v4.1.x bug that crawls `.md`/non-source files and crashes the build.
+ * Design tokens come from @piekai/design-tokens — single source of truth.
+ */
+@import "tailwindcss" source(none);
+@source "../app";
+@source "../components";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Design system tokens (CSS variables) — see DESIGN_SYSTEM.md. */
+@import "@piekai/design-tokens/tokens.css";
+
+/*
+ * Expose tokens as Tailwind theme values so utilities like `bg-bone-50`,
+ * `text-accent-500`, `font-display` are generated from the design system.
+ * next/font injects --font-display/--font-body/--font-mono at runtime;
+ * these override the static stacks declared in tokens.css.
+ */
+@theme {
+  --color-bone-50: var(--bone-50);
+  --color-bone-100: var(--bone-100);
+  --color-bone-200: var(--bone-200);
+  --color-bone-300: var(--bone-300);
+  --color-bone-400: var(--bone-400);
+  --color-bone-500: var(--bone-500);
+  --color-bone-600: var(--bone-600);
+  --color-bone-700: var(--bone-700);
+  --color-bone-800: var(--bone-800);
+  --color-bone-900: var(--bone-900);
+
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-300: var(--accent-300);
+  --color-accent-500: var(--accent-500);
+  --color-accent-700: var(--accent-700);
+  --color-accent-900: var(--accent-900);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --text-xs: var(--text-xs);
+  --text-sm: var(--text-sm);
+  --text-base: var(--text-base);
+  --text-lg: var(--text-lg);
+  --text-xl: var(--text-xl);
+  --text-2xl: var(--text-2xl);
+  --text-3xl: var(--text-3xl);
+  --text-4xl: var(--text-4xl);
+  --text-5xl: var(--text-5xl);
+  --text-6xl: var(--text-6xl);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bone-50);
+  color: var(--bone-600);
+  font-family: var(--font-body);
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headlines: refined serif, weight 400, tight tracking — never bold. */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--bone-700);
+}
+
+/* Visible focus ring — WCAG 2.2 AA, 2px accent. */
+:focus-visible {
+  outline: 2px solid var(--accent-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--accent-100);
+  color: var(--accent-900);
+}
+
+/* Respect prefers-reduced-motion: disable smooth scroll + non-essential motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
