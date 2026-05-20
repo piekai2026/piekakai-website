@@ -284,3 +284,25 @@ export const apiSpend = pgTable(
   },
   (t) => [index("api_spend_org_idx").on(t.organizationId), tenantPolicy("api_spend")],
 );
+
+// --- audit_requests -------------------------------------------------------
+// Phase 0 Free Audit funnel — LEAD table, NOT a tenant table.
+// This table has NO `organization_id`: the submitter has no org yet.
+//
+// RLS: enabled on the table, but NO policy is defined here.
+// Only the service-role connection (which bypasses RLS entirely) may
+// read or write this table. The submit Server Action and the future
+// /admin/audits view (Day 5+) both use the direct/service-role connection.
+// Never expose this table over the Supabase anon key.
+//
+// TODO Day 5+: mount /admin/audits view (depends on Auth).
+export const auditRequests = pgTable("audit_requests", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  companyName: text("company_name").notNull(),
+  websiteUrl: text("website_url").notNull(),
+  sector: text("sector").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone"), // nullable — optional in the form
+  status: text("status").notNull().default("pending"), // pending | delivered
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+});

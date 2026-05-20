@@ -29,6 +29,9 @@ importers:
       '@opennextjs/cloudflare':
         specifier: ^1.19.11
         version: 1.19.11(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(wrangler@4.93.0)
+      '@piekai/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@piekai/design-tokens':
         specifier: workspace:*
         version: link:../../packages/design-tokens

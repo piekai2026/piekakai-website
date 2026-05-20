@@ -3,22 +3,23 @@
 import { AuditRequest, SECTOR_OPTIONS } from "@piekai/types";
 import { useId, useState } from "react";
 import type { z } from "zod";
+import { submitAuditRequest } from "@/app/actions/submit-audit";
 import { Button } from "./Button";
 
 /**
- * AuditForm — section 7. Free Audit request form with client-side Zod
- * validation. The submit handler is a Phase 0 stub: it validates, shows a
- * confirmation state, and does NOT call a backend.
+ * AuditForm — section 7. Free Audit request form.
  *
- * >>> DAY 11-13: replace `submitAuditRequest` below with a real POST to the
- * Supabase Edge Function / tRPC route that inserts into `audit_requests`
- * and triggers the Brevo confirmation email. The AuditRequest schema in
- * @piekai/types is the shared contract — reuse it server-side. <<<
+ * Client-side Zod validation runs first for instant feedback. On success,
+ * the validated payload is forwarded to the `submitAuditRequest` Server Action
+ * which re-validates server-side, inserts into `audit_requests`, and sends
+ * the two Brevo confirmation emails.
+ *
+ * Day 11-13: wired to real Server Action (replaces Phase 0 stub).
  */
 
 type FieldName = keyof z.infer<typeof AuditRequest>;
 type Errors = Partial<Record<FieldName, string>>;
-type Status = "idle" | "submitting" | "success";
+type Status = "idle" | "submitting" | "success" | "error";
 
 const EMPTY = {
   companyName: "",
@@ -27,11 +28,6 @@ const EMPTY = {
   email: "",
   phone: "",
 };
-
-/* Phase 0 stub — see file header. No network call. */
-async function submitAuditRequest(_data: z.infer<typeof AuditRequest>): Promise<void> {
-  await new Promise((resolve) => setTimeout(resolve, 700));
-}
 
 const inputClass = (hasError: boolean) =>
   [
@@ -82,16 +78,21 @@ export function AuditForm() {
   const [values, setValues] = useState(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
+  const [serverError, setServerError] = useState<string | null>(null);
 
   function update(field: FieldName, value: string) {
     setValues((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
+    // Clear server error when the user starts correcting input.
+    if (serverError) setServerError(null);
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setServerError(null);
+
     const payload = {
       companyName: values.companyName,
       websiteUrl: values.websiteUrl,
@@ -115,7 +116,15 @@ export function AuditForm() {
 
     setErrors({});
     setStatus("submitting");
-    await submitAuditRequest(result.data);
+
+    const actionResult = await submitAuditRequest(result.data);
+
+    if (!actionResult.ok) {
+      setServerError(actionResult.error);
+      setStatus("error");
+      return;
+    }
+
     setStatus("success");
   }
 
@@ -246,6 +255,13 @@ export function AuditForm() {
           90 seconden. Geen verkoper. Rapport binnen 24 uur.
         </p>
       </div>
+
+      {/* Server-side error — shown below the submit row */}
+      {serverError && (
+        <p role="alert" className="mt-4 font-body text-sm text-danger">
+          {serverError}
+        </p>
+      )}
     </form>
   );
 }
