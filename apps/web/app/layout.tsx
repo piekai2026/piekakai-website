@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "PiekAI",
   ],
   authors: [{ name: "AanloopAI" }],
-  icons: { icon: "/favicon.ico" },
+  /* Favicon is provided by app/icon.svg (Next.js auto-detects it). */
   openGraph: {
     type: "website",
     locale: "nl_NL",
@@ -68,7 +68,17 @@ export default function RootLayout({
       lang="nl"
       className={`${cormorant.variable} ${inter.variable} ${jetbrainsMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-bone-50">{children}</body>
+      <body className="min-h-full flex flex-col bg-bone-50">
+        {/*
+         * No-JS fallback: <Reveal> SSRs content at opacity:0 / translateY(16px)
+         * for the scroll animation. Without JS the animation never runs, so
+         * force every reveal-anim element fully visible.
+         */}
+        <noscript>
+          <style>{".reveal-anim{opacity:1!important;transform:none!important}"}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }

@@ -61,7 +61,7 @@ export default function StatusPage() {
                 {allOperational ? "Alle systemen operationeel." : "Verminderde beschikbaarheid."}
               </h1>
             </div>
-            <p className="mt-5 font-mono text-xs text-bone-400">
+            <p className="mt-5 font-mono text-xs text-bone-500">
               Laatste controle:{" "}
               <time dateTime={new Date().toISOString()}>
                 {new Date().toLocaleString("nl-NL", {
@@ -97,7 +97,7 @@ export default function StatusPage() {
             ))}
           </ul>
 
-          <p className="mt-8 font-body text-sm leading-[1.65] text-bone-400">
+          <p className="mt-8 font-body text-sm leading-[1.65] text-bone-500">
             Real-time health checks worden toegevoegd in Fase 1. Storingen worden gemeld via{" "}
             <a
               href="mailto:hello@piekai.nl"

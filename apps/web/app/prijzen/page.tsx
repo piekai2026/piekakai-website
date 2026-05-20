@@ -111,10 +111,10 @@ export default function PrijzenPage() {
                   />
                 )}
 
-                <p className="font-mono text-xs text-bone-400">{tier.name}</p>
+                <p className="font-mono text-xs text-bone-500">{tier.name}</p>
                 <div className="mt-3 flex items-baseline gap-1">
                   <span className="font-mono text-3xl font-medium text-bone-800">{tier.price}</span>
-                  <span className="font-body text-sm text-bone-400">{tier.period}</span>
+                  <span className="font-body text-sm text-bone-500">{tier.period}</span>
                 </div>
                 <p className="mt-2 font-body text-sm text-bone-500">{tier.tagline}</p>
 
@@ -160,8 +160,8 @@ export default function PrijzenPage() {
           <div className="mt-8 rounded-[6px] border border-bone-200 bg-bone-50 p-8">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="font-mono text-xs text-bone-400">Enterprise</p>
-                <h3 className="mt-2 text-xl text-bone-800">Maatwerk voor grote organisaties</h3>
+                <p className="font-mono text-xs text-bone-500">Enterprise</p>
+                <h2 className="mt-2 text-xl text-bone-800">Maatwerk voor grote organisaties</h2>
                 <p className="mt-2 font-body text-sm leading-[1.65] text-bone-500">
                   Data-soevereiniteit, sectorale compliance-modules, white-label, ISO 27001. Prijzen
                   op aanvraag (€2.500–15.000/maand).

@@ -1,0 +1,29 @@
+# PiekAI
+
+> PiekAI is een autonome AI-agent die het bedrijf van Europese MKB- en
+> mid-market-ondernemingen naar #1 brengt — en daar houdt. Niet alleen in
+> Google, maar in elke AI-zoekmachine: ChatGPT, Perplexity, Gemini en Copilot.
+> PiekAI is een product van AanloopAI.
+
+PiekAI combineert klassieke SEO met GEO (Generative Engine Optimization): het
+optimaliseren van zichtbaarheid in generatieve AI-zoekmachines. De agent
+analyseert, plant en voert autonoom verbeteringen door, en rapporteert
+meetbare groei in vindbaarheid.
+
+Positionering: "Klusio gets you started, PiekAI gets you serious."
+
+## Belangrijkste pagina's
+
+- [Home](https://piekai.nl/): wat PiekAI doet en voor wie
+- [Prijzen](https://piekai.nl/prijzen): pakketten en tarieven
+- [Methodologie](https://piekai.nl/methodologie): hoe de autonome agent werkt
+- [Over ons](https://piekai.nl/over-ons): het verhaal achter PiekAI en AanloopAI
+- [Contact](https://piekai.nl/contact): neem contact op
+
+## Journal
+
+- [PiekAI Journal](https://piekai.nl/journal): artikelen over AI-zichtbaarheid, GEO en SEO
+
+## Optioneel
+
+- [Status](https://piekai.nl/status): operationele status van het platform

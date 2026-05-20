@@ -34,11 +34,14 @@ export function SignUpForm() {
     initialState,
   );
 
+  const hasError = !!state && !state.ok;
+
   return (
     <form action={formAction} noValidate className="flex flex-col gap-5">
       {/* Error banner */}
-      {state && !state.ok && (
+      {hasError && (
         <div
+          id="signup-error"
           role="alert"
           className="rounded-[4px] border border-danger bg-danger/5 px-4 py-3 font-body text-sm text-danger"
         >
@@ -58,6 +61,8 @@ export function SignUpForm() {
           autoComplete="email"
           required
           placeholder="jij@bedrijf.nl"
+          aria-invalid={hasError ? true : undefined}
+          aria-describedby={hasError ? "signup-error" : undefined}
           className="rounded-[4px] border border-bone-300 bg-bone-50 px-4 py-3 font-body text-sm text-bone-800 placeholder:text-bone-400 focus-visible:border-accent-500 focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-accent-500 transition-colors duration-150"
         />
       </div>
@@ -74,6 +79,8 @@ export function SignUpForm() {
           autoComplete="new-password"
           required
           placeholder="Minimaal 8 tekens"
+          aria-invalid={hasError ? true : undefined}
+          aria-describedby={hasError ? "signup-error" : undefined}
           className="rounded-[4px] border border-bone-300 bg-bone-50 px-4 py-3 font-body text-sm text-bone-800 placeholder:text-bone-400 focus-visible:border-accent-500 focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-accent-500 transition-colors duration-150"
         />
       </div>
@@ -90,6 +97,8 @@ export function SignUpForm() {
           autoComplete="new-password"
           required
           placeholder="••••••••"
+          aria-invalid={hasError ? true : undefined}
+          aria-describedby={hasError ? "signup-error" : undefined}
           className="rounded-[4px] border border-bone-300 bg-bone-50 px-4 py-3 font-body text-sm text-bone-800 placeholder:text-bone-400 focus-visible:border-accent-500 focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-accent-500 transition-colors duration-150"
         />
       </div>

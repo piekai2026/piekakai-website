@@ -41,7 +41,7 @@ export default function ContactPage() {
           <div className="grid gap-8 sm:grid-cols-2">
             {/* Email */}
             <div className="rounded-[6px] border border-bone-200 bg-bone-50 p-8">
-              <p className="font-mono text-xs text-bone-400">E-mail</p>
+              <p className="font-mono text-xs text-bone-500">E-mail</p>
               <a
                 href="mailto:hello@piekai.nl"
                 className="mt-3 block font-mono text-base text-accent-700 transition-colors hover:text-accent-500"
@@ -55,8 +55,8 @@ export default function ContactPage() {
 
             {/* Gratis audit */}
             <div className="rounded-[6px] border border-bone-200 bg-bone-50 p-8">
-              <p className="font-mono text-xs text-bone-400">Gratis audit</p>
-              <h3 className="mt-3 text-base text-bone-800">Wil je weten waar je nu staat?</h3>
+              <p className="font-mono text-xs text-bone-500">Gratis audit</p>
+              <h2 className="mt-3 text-base text-bone-800">Wil je weten waar je nu staat?</h2>
               <p className="mt-2 font-body text-sm leading-[1.65] text-bone-500">
                 Vraag een gratis AI-zichtbaarheidsrapport aan. 90 seconden, geen verkoper.
               </p>

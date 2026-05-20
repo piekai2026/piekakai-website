@@ -53,7 +53,7 @@ export default function NotFoundPage() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="font-body text-sm text-bone-400 transition-colors hover:text-bone-700"
+                    className="font-body text-sm text-bone-500 transition-colors hover:text-bone-800"
                   >
                     {link.label}
                   </a>

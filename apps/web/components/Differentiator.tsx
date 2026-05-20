@@ -97,7 +97,7 @@ export function Differentiator() {
                 className={
                   col.highlight
                     ? "font-mono text-xs tracking-wide text-accent-700"
-                    : "font-mono text-xs tracking-wide text-bone-400"
+                    : "font-mono text-xs tracking-wide text-bone-500"
                 }
               >
                 {col.tag}

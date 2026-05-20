@@ -45,7 +45,7 @@ export default function JournalIndexPage() {
         {/* Post list */}
         <section className="mx-auto max-w-[1200px] px-6 py-16 sm:px-12">
           {posts.length === 0 ? (
-            <p className="font-body text-base text-bone-400">
+            <p className="font-body text-base text-bone-500">
               Eerste post komt snel. Abonneer via{" "}
               <a
                 href="/journal/rss.xml"
@@ -68,12 +68,14 @@ export default function JournalIndexPage() {
                       <div className="flex items-baseline gap-4">
                         <time
                           dateTime={post.date}
-                          className="shrink-0 font-mono text-xs text-bone-400"
+                          className="shrink-0 font-mono text-xs text-bone-500"
                         >
                           {formatDateNL(post.date)}
                         </time>
-                        <span className="font-mono text-xs text-bone-300">·</span>
-                        <span className="font-mono text-xs text-bone-400">
+                        <span className="font-mono text-xs text-bone-400" aria-hidden="true">
+                          ·
+                        </span>
+                        <span className="font-mono text-xs text-bone-500">
                           {post.readingTime} min
                         </span>
                       </div>
@@ -118,7 +120,7 @@ export default function JournalIndexPage() {
           <div className="mt-12 border-t border-bone-200 pt-6">
             <a
               href="/journal/rss.xml"
-              className="inline-flex items-center gap-2 font-body text-sm text-bone-400 transition-colors hover:text-bone-700"
+              className="inline-flex items-center gap-2 font-body text-sm text-bone-500 transition-colors hover:text-bone-800"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
                 <circle cx="3" cy="11" r="1.5" fill="currentColor" />

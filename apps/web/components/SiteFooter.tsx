@@ -45,10 +45,10 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-bone-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-body text-sm text-bone-400">
+          <p className="font-body text-sm text-bone-500">
             &copy; {year} PiekAI — een product van AanloopAI.
           </p>
-          <p className="font-body text-sm text-bone-400">Gebouwd in Rotterdam. Data in de EU.</p>
+          <p className="font-body text-sm text-bone-500">Gebouwd in Rotterdam. Data in de EU.</p>
         </div>
       </div>
     </footer>

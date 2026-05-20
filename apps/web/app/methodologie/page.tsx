@@ -120,7 +120,7 @@ export default function MethodologiePage() {
                 },
               ].map(({ step, title, body }) => (
                 <div key={step} className="rounded-[6px] border border-bone-200 bg-bone-50 p-8">
-                  <p className="font-mono text-xs text-bone-400">{step}</p>
+                  <p className="font-mono text-xs text-bone-500">{step}</p>
                   <h3 className="mt-3 text-xl text-bone-800">{title}</h3>
                   <p className="mt-3 font-body text-sm leading-[1.65] text-bone-500">{body}</p>
                 </div>
@@ -139,13 +139,22 @@ export default function MethodologiePage() {
               <table className="w-full font-body text-sm text-bone-600 border-collapse">
                 <thead>
                   <tr>
-                    <th className="text-left font-medium text-bone-700 py-3 pr-4 border-b border-bone-200 bg-bone-100 pl-0">
+                    <th
+                      scope="col"
+                      className="text-left font-medium text-bone-700 py-3 pr-4 border-b border-bone-200 bg-bone-100 pl-0"
+                    >
                       Agent
                     </th>
-                    <th className="text-left font-medium text-bone-700 px-4 py-3 border-b border-bone-200 bg-bone-100">
+                    <th
+                      scope="col"
+                      className="text-left font-medium text-bone-700 px-4 py-3 border-b border-bone-200 bg-bone-100"
+                    >
                       Taak
                     </th>
-                    <th className="text-left font-medium text-bone-700 px-4 py-3 border-b border-bone-200 bg-bone-100">
+                    <th
+                      scope="col"
+                      className="text-left font-medium text-bone-700 px-4 py-3 border-b border-bone-200 bg-bone-100"
+                    >
                       Trigger
                     </th>
                   </tr>
@@ -153,11 +162,14 @@ export default function MethodologiePage() {
                 <tbody>
                   {AGENTS.map((agent) => (
                     <tr key={agent.name} className="hover:bg-bone-100 transition-colors">
-                      <td className="py-3 pr-4 border-b border-bone-200 pl-0 font-medium text-bone-800 font-mono text-xs">
+                      <th
+                        scope="row"
+                        className="text-left py-3 pr-4 border-b border-bone-200 pl-0 font-medium text-bone-800 font-mono text-xs"
+                      >
                         {agent.name}
-                      </td>
+                      </th>
                       <td className="px-4 py-3 border-b border-bone-200">{agent.role}</td>
-                      <td className="px-4 py-3 border-b border-bone-200 text-bone-400">
+                      <td className="px-4 py-3 border-b border-bone-200 text-bone-500">
                         {agent.trigger}
                       </td>
                     </tr>

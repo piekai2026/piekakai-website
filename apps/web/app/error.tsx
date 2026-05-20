@@ -46,7 +46,7 @@ export default function ErrorPage({ error, reset }: Props) {
           </p>
 
           {error.digest && (
-            <p className="mt-3 font-mono text-xs text-bone-300">Foutcode: {error.digest}</p>
+            <p className="mt-3 font-mono text-xs text-bone-500">Foutcode: {error.digest}</p>
           )}
 
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -65,7 +65,7 @@ export default function ErrorPage({ error, reset }: Props) {
             </a>
           </div>
 
-          <p className="mt-8 font-body text-sm text-bone-400">
+          <p className="mt-8 font-body text-sm text-bone-500">
             Probleem aanhoudt?{" "}
             <a
               href="mailto:hello@piekai.nl"
@@ -81,7 +81,7 @@ export default function ErrorPage({ error, reset }: Props) {
       {/* Minimal footer */}
       <footer className="border-t border-bone-200">
         <div className="mx-auto max-w-[1200px] px-6 py-6 sm:px-12">
-          <p className="font-body text-xs text-bone-400">
+          <p className="font-body text-xs text-bone-500">
             &copy; {new Date().getFullYear()} PiekAI — een product van AanloopAI.
           </p>
         </div>

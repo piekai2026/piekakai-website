@@ -51,7 +51,7 @@ export function TrustSignals() {
 
         <Reveal delay={0.2}>
           <div className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-bone-200 pt-8">
-            <span className="font-body text-sm text-bone-400">Gebouwd op</span>
+            <span className="font-body text-sm text-bone-500">Gebouwd op</span>
             {STACK.map((name) => (
               <span
                 key={name}

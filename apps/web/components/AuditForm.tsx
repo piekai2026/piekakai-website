@@ -56,7 +56,7 @@ function Field({
     <div>
       <label htmlFor={id} className="mb-1.5 block font-body text-sm font-medium text-bone-700">
         {label}
-        {optional && <span className="ml-1.5 font-normal text-bone-400">(optioneel)</span>}
+        {optional && <span className="ml-1.5 font-normal text-bone-500">(optioneel)</span>}
         {required && (
           <span className="ml-1 text-danger" aria-hidden="true">
             *
@@ -130,7 +130,11 @@ export function AuditForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-accent-500 bg-bone-50 p-8 text-center sm:p-12">
+      <div
+        role="status"
+        aria-live="polite"
+        className="rounded-lg border border-accent-500 bg-bone-50 p-8 text-center sm:p-12"
+      >
         <svg viewBox="0 0 48 48" className="mx-auto h-12 w-12" role="img" aria-label="Verzonden">
           <title>Verzonden</title>
           <circle cx="24" cy="24" r="22" fill="none" stroke="var(--accent-500)" strokeWidth="1.5" />
@@ -170,6 +174,7 @@ export function AuditForm() {
             id={`${baseId}-companyName`}
             name="companyName"
             type="text"
+            required
             autoComplete="organization"
             value={values.companyName}
             onChange={(e) => update("companyName", e.target.value)}
@@ -184,6 +189,7 @@ export function AuditForm() {
             id={`${baseId}-websiteUrl`}
             name="websiteUrl"
             type="text"
+            required
             inputMode="url"
             placeholder="jouwbedrijf.nl"
             autoComplete="url"
@@ -199,6 +205,7 @@ export function AuditForm() {
           <select
             id={`${baseId}-sector`}
             name="sector"
+            required
             value={values.sector}
             onChange={(e) => update("sector", e.target.value)}
             aria-invalid={errors.sector ? true : undefined}
@@ -221,6 +228,7 @@ export function AuditForm() {
             id={`${baseId}-email`}
             name="email"
             type="email"
+            required
             autoComplete="email"
             value={values.email}
             onChange={(e) => update("email", e.target.value)}
@@ -251,7 +259,7 @@ export function AuditForm() {
         <Button type="submit" size="lg" disabled={status === "submitting"}>
           {status === "submitting" ? "Bezig met versturen…" : "Vraag gratis audit aan"}
         </Button>
-        <p className="font-body text-sm text-bone-400">
+        <p className="font-body text-sm text-bone-500">
           90 seconden. Geen verkoper. Rapport binnen 24 uur.
         </p>
       </div>

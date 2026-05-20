@@ -91,7 +91,7 @@ export function HowItWorks() {
               <div className="flex h-full flex-col p-8 sm:p-9">
                 {step.glyph}
                 <div className="mt-7 flex items-baseline gap-3">
-                  <span className="font-mono text-sm text-bone-400">{step.num}</span>
+                  <span className="font-mono text-sm text-bone-500">{step.num}</span>
                   <h3 className="text-2xl text-bone-800">{step.title}</h3>
                 </div>
                 <p className="mt-3 font-body text-base leading-[1.7] text-bone-500">{step.body}</p>

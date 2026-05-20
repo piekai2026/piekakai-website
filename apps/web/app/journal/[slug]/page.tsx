@@ -91,7 +91,7 @@ export default async function JournalPostPage({ params }: Props) {
           <div className="mx-auto max-w-[720px] px-6 py-12 sm:px-12 sm:py-16">
             <a
               href="/journal"
-              className="inline-flex items-center gap-1.5 font-body text-sm text-bone-400 transition-colors hover:text-bone-700"
+              className="inline-flex items-center gap-1.5 font-body text-sm text-bone-500 transition-colors hover:text-bone-800"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
                 <path
@@ -114,11 +114,11 @@ export default async function JournalPostPage({ params }: Props) {
               </p>
             )}
 
-            <div className="mt-6 flex items-center gap-4 font-mono text-xs text-bone-400">
+            <div className="mt-6 flex items-center gap-4 font-mono text-xs text-bone-500">
               <span>{post.author}</span>
-              <span>·</span>
+              <span aria-hidden="true">·</span>
               <time dateTime={post.date}>{formatDateNL(post.date)}</time>
-              <span>·</span>
+              <span aria-hidden="true">·</span>
               <span>{post.readingTime} min leestijd</span>
             </div>
           </div>

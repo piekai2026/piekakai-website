@@ -27,9 +27,14 @@ export function Reveal({ children, delay = 0, className, as = "div" }: RevealPro
     return <Tag className={className}>{children}</Tag>;
   }
 
+  /*
+   * `reveal-anim` lets a <noscript> stylesheet (see app/layout.tsx) force
+   * content visible when JS is disabled — without it the SSR'd initial
+   * `opacity: 0` would leave content permanently invisible for no-JS users.
+   */
   return (
     <MotionTag
-      className={className}
+      className={className ? `${className} reveal-anim` : "reveal-anim"}
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
