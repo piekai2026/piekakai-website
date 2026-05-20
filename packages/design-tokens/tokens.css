@@ -1,0 +1,79 @@
+/**
+ * PiekAI Design Tokens — single source of truth for the design system.
+ * See DESIGN_SYSTEM.md. The Tailwind 4 `@theme` in apps/web extends from these.
+ * Phase 0: light mode only; the token system is dark-mode-ready (Phase 2).
+ */
+
+:root {
+  /* --- Base palette: warm-neutral "bone" --- */
+  --bone-50: #fafaf7;
+  --bone-100: #f2f1ec;
+  --bone-200: #e8e6de;
+  --bone-300: #d4d1c6;
+  --bone-400: #a8a498;
+  --bone-500: #6b6860;
+  --bone-600: #4a4842;
+  --bone-700: #2e2d28;
+  --bone-800: #1a1917;
+  --bone-900: #0e0e0c;
+
+  /* --- Accent: deep forest green --- */
+  --accent-50: #e8efe9;
+  --accent-100: #c5d6c9;
+  --accent-300: #6f9479;
+  --accent-500: #3e6d4e;
+  --accent-700: #2a4d37;
+  --accent-900: #1a3023;
+
+  /* --- Semantic (used sparingly) --- */
+  --success: #3e6d4e;
+  --warning: #b8923d;
+  --danger: #a23e3e;
+  --info: #4a5e7a;
+
+  /* --- Typography --- */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+  /* Type scale — Major Third (1.25 ratio) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+  --text-5xl: 4rem;
+  --text-6xl: 5.25rem;
+
+  /* --- Spacing (multiples of 4) --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 192px;
+  --space-12: 256px;
+
+  /* --- Border radius (restrained) --- */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  /* --- Borders --- */
+  --border-color: var(--bone-200);
+  --border-width: 1px;
+
+  /* --- Shadows (mostly avoided; prefer borders + spacing) --- */
+  --shadow-sm: 0 1px 2px 0 rgba(14, 14, 12, 0.04);
+  --shadow-md: 0 4px 12px -2px rgba(14, 14, 12, 0.08);
+  --shadow-lg: 0 16px 48px -8px rgba(14, 14, 12, 0.12);
+}

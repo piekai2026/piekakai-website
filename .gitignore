@@ -1,0 +1,40 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+.next/
+.open-next/
+.turbo/
+.wrangler/
+dist/
+out/
+build/
+
+# env / secrets
+.env
+.env.local
+.env*.local
+.dev.vars
+.dev.vars.*
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.uv/
+
+# test / coverage
+coverage/
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
