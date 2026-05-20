@@ -27,6 +27,19 @@ approval, then execute.
 - [x] Day 20-21 — Phase 1 kickoff doc (`docs/phase-1-kickoff.md`), `lessons.md`
       wrap-up, tag `v0.1.0-phase0-complete`. **Phase 0 complete.**
 
+## Phase 1 — Core Loop MVP
+
+- [x] `apps/agents` scaffold — LangGraph cycle graph (Perception→Diagnostician→
+      Strategist→Operator→Analyst), `BaseAgent`, stub swarm + Guardian/Scout/
+      Conductor, pure guardrails module (9 tests), Settings/structlog, typed
+      `CycleState`. Agent bodies are Phase-1 TODOs.
+- [ ] `apps/crawler` scaffold — Playwright crawler
+- [ ] BullMQ + Redis queue on Hetzner CPX22
+- [ ] DataForSEO connector in `packages/connectors`
+- [ ] Fill agent bodies: Perception (GSC/DataForSEO/LLM-citation pulls) →
+      Diagnostician → Strategist → Operator (CMS connector) → Analyst
+- [ ] First Tier-2 autonomous cycle against `alfareclame.nl`
+
 ## Needs M (manual / accounts)
 
 - [ ] `pnpm --filter @piekai/db db:migrate` — apply migration `0001` (audit_requests)
