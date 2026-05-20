@@ -23,8 +23,9 @@ approval, then execute.
 ### Week 2
 
 - [x] Day 8-10 — Landing page v1 — 8 sections, NL, verified desktop + mobile (commit `e58b9a8`)
-- [ ] Day 11-13 — Free Audit funnel v1 (manual-fulfilled): `audit_requests` table,
-      submit endpoint (the form UI + `AuditRequest` schema already exist), Brevo emails, `/admin/audits`
+- [~] Day 11-13 — Free Audit funnel BACKEND done (commit `9edb892`): `audit_requests`
+      table + migration `0001`, submit Server Action, Brevo helper. Pending: M runs
+      `db:migrate`, creates 2 Brevo templates. `/admin/audits` deferred to Day 5+ (needs Auth).
 - [ ] Day 14 — Quality pass: Lighthouse 95+, WCAG 2.2 AA, OG images, robots/sitemap/llms.txt
 
 ### Week 3
