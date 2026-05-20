@@ -8,12 +8,14 @@ approval, then execute.
 - [x] Planning docs revised (VISION / PHASE_0_PLAN / DESIGN_SYSTEM) — aligned to the
       2026 stack
 - [x] Phase 0 Day 1-2 — monorepo scaffold (commit `4558a33`)
+- [x] Phase 0 Day 3 — Supabase `piekai-prod`, 13-table Drizzle schema + RLS, migration
+      applied, seed org `AanloopAI`, custom_access_token_hook enabled. (Note:
+      prod-only — `piekai-dev` skipped, free-plan 2-project limit.)
 
 ## Phase 0 — remaining (see `PHASE_0_PLAN.md`)
 
 ### Week 1
 
-- [ ] Day 3 — Supabase: `piekai-prod` + `piekai-dev` projects, Drizzle schema, RLS, seed org 1
 - [ ] Day 4 — Cloudflare: Workers project, env vars, Email Routing, R2 bucket
 - [ ] Day 5 — Supabase Auth, Sentry, Axiom, Brevo, SPF/DKIM/DMARC
 - [ ] Day 6-7 — GitHub Actions CI/CD, branch protection, secrets
