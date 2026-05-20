@@ -22,8 +22,9 @@ approval, then execute.
 
 ### Week 2
 
-- [ ] Day 8-10 — Landing page v1 (read `DESIGN_SYSTEM.md`)
-- [ ] Day 11-13 — Free Audit funnel v1 (manual-fulfilled)
+- [x] Day 8-10 — Landing page v1 — 8 sections, NL, verified desktop + mobile (commit `e58b9a8`)
+- [ ] Day 11-13 — Free Audit funnel v1 (manual-fulfilled): `audit_requests` table,
+      submit endpoint (the form UI + `AuditRequest` schema already exist), Brevo emails, `/admin/audits`
 - [ ] Day 14 — Quality pass: Lighthouse 95+, WCAG 2.2 AA, OG images, robots/sitemap/llms.txt
 
 ### Week 3
