@@ -1,0 +1,61 @@
+# deploy.yml — PiekAI production deploy to Cloudflare Workers
+#
+# Triggers on push to main. Builds apps/web with OpenNext and deploys
+# to the `piekai-web` Cloudflare Worker via opennextjs-cloudflare deploy.
+#
+# ─── Required GitHub Secrets ──────────────────────────────────────────────────
+#
+#   CLOUDFLARE_API_TOKEN     Cloudflare API token with Workers:Edit permission
+#   CLOUDFLARE_ACCOUNT_ID    Cloudflare account ID (found in dashboard sidebar)
+#
+# Optional secrets (set in Cloudflare dashboard env vars, not here):
+#   NEXT_PUBLIC_SUPABASE_URL          Supabase project URL
+#   NEXT_PUBLIC_SUPABASE_ANON_KEY     Supabase anon/public key
+#   SUPABASE_SERVICE_ROLE_KEY         Supabase service-role key (server-only)
+#   SENTRY_DSN                        Sentry DSN for error tracking
+#   BREVO_API_KEY                     Brevo transactional email API key
+# ──────────────────────────────────────────────────────────────────────────────
+
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build & Deploy → Cloudflare Workers
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+          run_install: false
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build & deploy web app
+        run: pnpm --filter web run deploy
+        working-directory: ${{ github.workspace }}
